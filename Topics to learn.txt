@@ -1,0 +1,73 @@
+Introduction
+Installation / Setup
+Components
+	Creating Components
+	Basic Components
+	
+React Component Lifecycle
+	Component Creation
+	Component Removal
+	
+Props in React
+	Introduction
+	Default Props
+	
+State in React
+	Basic State
+	Common Antipattern
+	
+Forms and User Input
+	Controlled Components
+	Uncontrolled Components
+	
+React AJAX call
+	HTTP GET Request
+	HTTP GET Request and looping through data
+	
+Inter-Component Communication
+	Child to Parent
+	Not-related Components
+	Stateless Functional Components
+	
+ReactJS with TypeScript
+	ReactJS component written in TS
+	Installation and Setup
+
+Keys in React
+	Using the array index
+	Using the ID of an element
+	
+How and why to use keys in React
+	EXAMPLE
+	
+React Routing
+	Example Routes.js file
+	Router Link in component
+	React Routing Async
+	
+=================================================================
+
+How to create a React app
+Create components
+Manage state and properties
+Handle events
+Work with forms and input
+Work with JSX
+Lifecycle methods
+Fetch data from an API
+
+
+
+=================================================================
+
+Install NodeJS
+
+npm install -g create-react-app
+
+create-react-app <APP NAME>
+
+cd <APP NAME>
+
+npm start
+
+	-	npm run build	-	For production.
