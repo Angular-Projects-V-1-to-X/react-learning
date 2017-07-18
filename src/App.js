@@ -1,19 +1,37 @@
 import React, { Component } from 'react';
 import Projects from './Components/Projects';
 import AddProject from './Components/AddProject';
+import ToDos from './Components/ToDos';
 import uuid from 'uuid';
+import $ from 'jquery';
 import './App.css';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      projects: []
+      projects: [],
+      todos: []
     }
   }
 
-  //Lifecycle method - componentWillMount is invoked immediately before mounting occurs.
-  componentWillMount(){
+  getToDos(){
+    $.ajax({
+      url: 'https://jsonplaceholder.typicode.com/todos',
+      dataType: 'json',
+      cache: false,
+      success: function(data){
+        this.setState({todos: data}, function(){
+          console.log(this.state);
+        });
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.log(err);
+      }
+    });
+  }
+
+  getProjects(){
     this.setState({projects: [
       {
         id: uuid.v4(),
@@ -33,6 +51,16 @@ class App extends Component {
     ]});
   }
 
+  //Lifecycle method - componentWillMount is invoked immediately before mounting occurs.
+  componentWillMount(){
+    this.getProjects();
+    this.getToDos();
+  }
+
+  componentDidMount(){
+
+  }
+
   handleAddProject(project){
     console.log(project);
     //Since your state is immutable u can't change it. U can just update it.
@@ -48,11 +76,20 @@ class App extends Component {
     this.setState({projects:projects});
   }
 
+  handleDeleteToDo(id){
+    let todos = this.state.todos;
+    let index = todos.findIndex(x => x.id === id);
+    todos.splice(index, 1);
+    this.setState({todos:todos});
+  }
+
   render() {
     return (
       <div className="App">
         <AddProject addProject={this.handleAddProject.bind(this)} />
         <Projects projects={this.state.projects} onDelete={this.handleDeleteProject.bind(this)} />
+        <hr />
+        <ToDos todos={this.state.todos} />
       </div>
     );
   }
