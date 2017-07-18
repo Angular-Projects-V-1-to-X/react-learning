@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
+import $ from 'jquery';
+
 import Projects from './Components/Projects';
 import AddProject from './Components/AddProject';
 import ToDos from './Components/ToDos';
-import uuid from 'uuid';
-import $ from 'jquery';
+
 import './App.css';
 
 class App extends Component {
